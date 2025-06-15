@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./component/login";
 import Register from "./component/register";
 import MovieCard from "./component/MovieCard";
-import About from "./component/about";
+import About from "./component/About";
 import Watching from "./component/watching";
 import Contact from "./component/Contact";
 
