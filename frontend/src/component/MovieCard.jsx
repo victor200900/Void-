@@ -160,101 +160,74 @@ const MovieCard = () => {
           </div>
         </form>
         {loading && <div className="text-center text-danger">Loading...</div>}
-        <div className="row mt-4">
-          {movies.slice(0, 16).map((movie) => (
-            <div key={movie.id} className="col-md-3 mb-4">
-              <div className="card shadow-sm h-100">
-                <img
-                  src={
-                    movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                      : fallbackImage
-                  }
-                  className="card-img-top movie-img"
-                  alt={movie.title}
-                />
+       <div className="row mt-4">
+  {movies.slice(0, 16).map((movie) => (
+    <div key={movie.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex">
+      <div className="card shadow-sm w-100 d-flex flex-column movie-card">
+        <img
+          src={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : fallbackImage
+          }
+          className="card-img-top movie-img"
+          alt={movie.title}
+        />
+        <div className="card-body d-flex flex-column justify-content-between bg-dark text-white text-center">
+          <h5 className="card-title">{movie.title}</h5>
+          <div className="d-grid gap-2">
+  <a
+    href={`https://www.themoviedb.org/movie/${movie.id}`}
+    className="btn btn-danger btn-sm"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    View Details
+  </a>
+  <a
+    href={getDownloadLink(movie)}
+    className="btn btn-primary btn-sm"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Download
+  </a>
+</div>
 
-                <div className="card-body bg-dark text-white text-center">
-                  <h5 className="card-title">{movie.title}</h5>
-                  <a
-                    href={`https://www.themoviedb.org/movie/${movie.id}`}
-                    className="btn btn-danger btn-sm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Details
-                  </a>
-                  <a
-                    href={getDownloadLink(movie)}
-                    className="btn btn-primary btn-sm mt-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
+      </div>
+    </div>
+  ))}
+</div>
       </div></div>
 
       <style>{`
-  .card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-
-  .card:hover {
-    transform: scale(1.03);
-  }
-
   .movie-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2/3;
+    height: 350px;
     object-fit: cover;
-    flex-shrink: 0;
+    border-bottom: 1px solid #333;
+    width: 100%;
   }
 
-  .card-body {
-    flex-grow: 1;
-    background-color: #212529;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+  .movie-card {
+    transition: transform 0.3s ease;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
   }
 
-  @media (max-width: 768px) {
-    .card-title {
-      font-size: 1rem;
-    }
-
-    .btn {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.6rem;
-    }
+  .movie-card:hover {
+    transform: scale(1.03);
+    z-index: 10;
+    position: relative;
   }
 
   @media (max-width: 576px) {
     .movie-img {
-      aspect-ratio: 2/3;
-      height: auto;
-    }
-
-    .card-body {
-      padding: 0.8rem;
+      height: 280px;
     }
   }
 `}</style>
-
 
     </>
   );
