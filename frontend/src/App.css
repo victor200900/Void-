@@ -1,6 +1,20 @@
 .navbar{
   display: flex;
+  background-color:rgb(26, 1, 69) !important;
 }
+
+.all{
+ background-image: url(assets/one.jpg);
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+}
+.navbar-brand{
+   color: white !important;
+   font-family: 'Courier New', Courier, monospace;
+}
+
 .a1{
   margin-right: 50px;
 }
@@ -16,5 +30,52 @@
   transform: scale(1.1);
 }
 .all{
-  background-color: black;
+  background-color: rgb(0, 0, 53) !;
+}
+
+.netflix-profile-page {
+  background: #003258;
+  padding: 80px 20px;
+  min-height: 100vh;
+  color: #ffffff;
+}
+.netflix-profile-page h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.profile-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.profile-item img {
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 4px solid white;
+  background: white;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.profile-item p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.profile-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }

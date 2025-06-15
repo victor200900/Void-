@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Login = () => {
@@ -10,13 +10,15 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     if (!email || !password) {
       setError("Please fill in both fields");
       return;
     }
 
-    setError("");
+    // Simulate login
     localStorage.setItem("user", email);
+    setError("");
     navigate("/movie");
   };
 
@@ -47,12 +49,12 @@ const Login = () => {
           <button className="btn btn-danger w-100 mb-3" type="submit">
             Sign In
           </button>
-          <div className="text-center">
-            <small className="text-muted">
-              New to void? <a href="/register" className="text-light">Sign up now.</a>
-            </small>
-          </div>
         </form>
+        <div className="text-center">
+          <small className="text-muted">
+            New to Void? <Link to="/register" className="text-light">Sign up now.</Link>
+          </small>
+        </div>
       </div>
     </div>
   );
