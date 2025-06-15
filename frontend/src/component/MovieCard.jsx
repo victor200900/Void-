@@ -205,26 +205,56 @@ const MovieCard = () => {
     flex-direction: column;
     height: 100%;
     transition: transform 0.3s ease;
+    overflow: hidden;
+    border-radius: 8px;
   }
+
   .card:hover {
     transform: scale(1.03);
   }
+
   .movie-img {
-    height: 350px;
-    object-fit: cover;
     width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    object-fit: cover;
     flex-shrink: 0;
   }
+
   .card-body {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background-color: #212529;
     color: white;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .card-title {
+      font-size: 1rem;
+    }
+
+    .btn {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.6rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .movie-img {
+      aspect-ratio: 2/3;
+      height: auto;
+    }
+
+    .card-body {
+      padding: 0.8rem;
+    }
   }
 `}</style>
+
 
     </>
   );
