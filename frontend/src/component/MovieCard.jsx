@@ -200,18 +200,32 @@ const MovieCard = () => {
       </div></div>
 
       <style>{`
-        .movie-img {
-          height: 350px;
-          object-fit: cover;
-          border-bottom: 1px solid #333;
-        }
-        .card {
-          transition: transform 0.3s ease;
-        }
-        .card:hover {
-          transform: scale(1.03);
-        }
-      `}</style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: scale(1.03);
+  }
+  .movie-img {
+    height: 350px;
+    object-fit: cover;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #212529;
+    color: white;
+    padding: 1rem;
+  }
+`}</style>
+
     </>
   );
 };
