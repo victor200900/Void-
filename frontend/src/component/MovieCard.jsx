@@ -104,6 +104,7 @@ const MovieCard = () => {
 
   return (
     <>
+    <div className="all">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand fw-bold text-danger" href="#">Void</a>
@@ -196,7 +197,7 @@ const MovieCard = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div></div>
 
       <style>{`
         .movie-img {
