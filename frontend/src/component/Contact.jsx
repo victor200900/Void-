@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
     <div className="bg-black text-white py-5 min-vh-100">
       <div className="container">
+        <div>
+         <Link to='/movie'><button className="rounded">BACK</button></Link> 
+        </div>
         <div className="text-center mb-5">
-          <h2 className="fw-bold display-5">Contact Us</h2>
-          <p className="text-muted fs-5">
+          <h2 className=" fw-bold display-5">Contact Us</h2>
+          <p className=" fs-5">
             Questions? Feedback? We’re always listening.
           </p>
         </div>
@@ -42,7 +46,7 @@ const Contact = () => {
             <label htmlFor="message" className="text-secondary">Your Message</label>
           </div>
 
-          <button type="submit" className="btn btn-danger w-100 py-3 fw-bold">
+          <button type="submit" className="btn btn-primary w-100 py-3 fw-bold ">
             Send Message
           </button>
         </form>

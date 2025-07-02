@@ -1,75 +1,99 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+  const { user, logout } = useContext(AuthContext);
 
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+  return (
+    <nav className="navbar navbar-expand-lg custom-navbar shadow-sm px-3 py-2">
+      <div className="container-fluid d-flex justify-content-between align-items-center">
+
+        {/* Left: Logo */}
+        <Link className="navbar-brand fw-bold logo-text" to="/">
+          <span className="text-glow">Void</span>Movies
+        </Link>
+
+        {/* Center: Navigation Links */}
+        <div className="collapse navbar-collapse justify-content-center">
+          <ul className="navbar-nav gap-4">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
+              <Link className="nav-link nav-glow" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+              <Link className="nav-link nav-glow" to="/about">About</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
+              <Link className="nav-link nav-glow" to="/contact">Contact</Link>
             </li>
           </ul>
-          
+        </div>
+
+        {/* Right: Auth */}
+        <div className="d-flex align-items-center gap-2">
+          {user ? (
+            <>
+              <span className="text-white small">{user}</span>
+              <button className="btn btn-outline-danger btn-sm" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-outline-danger btn-sm">
+              Login
+            </Link>
+          )}
         </div>
       </div>
+
+      {/* Custom Styles */}
+      <style>{`
+        .custom-navbar {
+          background: linear-gradient(90deg, #000000, #1a1a1a);
+          border-bottom: 1px solid #ff0000;
+        }
+
+        .logo-text {
+          font-family: 'Orbitron', sans-serif;
+          font-size: 1.6rem;
+          letter-spacing: 1px;
+        }
+
+        .text-glow {
+          color: #ff0033;
+          text-shadow: 0 0 5px #ff0033, 0 0 10px #ff0033;
+        }
+
+        .nav-link {
+          font-weight: 500;
+          position: relative;
+        }
+
+        .nav-glow {
+          color: #f1f1f1;
+          transition: all 0.3s ease;
+        }
+
+        .nav-glow:hover {
+          color: #ff0033;
+          text-shadow: 0 0 5px #ff0033, 0 0 10px #ff0033;
+        }
+
+        .dropdown-menu-dark {
+          background-color: #1e1e1e;
+        }
+
+        .dropdown-item:hover {
+          background-color: #ff0033;
+          color: #fff;
+        }
+
+        .btn-outline-danger:hover {
+          background-color: #ff0033;
+          color: white;
+          border-color: #ff0033;
+        }
+      `}</style>
     </nav>
   );
 };

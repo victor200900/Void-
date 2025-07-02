@@ -1,7 +1,4 @@
-.navbar{
-  display: flex;
-  background-color:rgb(26, 1, 69) !important;
-}
+
 
 .all{
  background-image: url(assets/one.jpg);
@@ -9,10 +6,6 @@
  background-size: cover;
  background-repeat: no-repeat;
  background-attachment: fixed;
-}
-.navbar-brand{
-   color: white !important;
-   font-family: 'Courier New', Courier, monospace;
 }
 
 .a1{
@@ -78,4 +71,19 @@
 .profile-item:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+.run{
+  background-image:url(assets/one.jpg) ;
+  background-position: fixed;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
