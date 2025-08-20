@@ -1,7 +1,7 @@
 
 
 .all{
- background-image: url(assets/one.jpg);
+ background: black !important;
  background-position: center;
  background-size: cover;
  background-repeat: no-repeat;
@@ -81,7 +81,7 @@
   font-weight: 500;
 }
 .run{
-  background-image:url(assets/one.jpg) ;
+  background: linear-gradient(to right , rgb(212, 21, 21) , rgb(0, 0, 0));
   background-position: fixed;
   background-attachment: fixed;
   background-size: cover;

@@ -17,7 +17,7 @@ const About = () => {
           Experience seamless streaming in high definition with personalized
           recommendations tailored just for you.
         </p>
-        <Link to ='/movie'>
+        <Link to ='/'>
         <button className="btn btn-danger btn-lg mt-4 px-5 py-3 fw-semibold shadow-lg">
           Get Started
         </button>

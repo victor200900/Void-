@@ -8,7 +8,7 @@ const Contact = () => {
     <div className="bg-black text-white py-5 min-vh-100">
       <div className="container">
         <div>
-          <Link to="/movie">
+          <Link to="/">
             <button className="rounded">BACK</button>
           </Link>
         </div>

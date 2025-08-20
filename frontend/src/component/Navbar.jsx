@@ -30,20 +30,7 @@ const Navbar = () => {
         </div>
 
         {/* Right: Auth */}
-        <div className="d-flex align-items-center gap-2">
-          {user ? (
-            <>
-              <span className="text-white small">{user}</span>
-              <button className="btn btn-outline-danger btn-sm" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <Link to="/login" className="btn btn-outline-danger btn-sm">
-              Login
-            </Link>
-          )}
-        </div>
+        
       </div>
 
       {/* Custom Styles */}

@@ -1,61 +1,13 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // ====== AUTH CONTEXT ======
-const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => localStorage.getItem("user") || null);
-
-  const login = (username) => {
-    setUser(username);
-    localStorage.setItem("user", username);
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-  };
-
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
 
 // ====== LOGIN PAGE ======
-export const Login = () => {
-  const { login } = useContext(AuthContext);
-  const [username, setUsername] = useState("");
-  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (username.trim()) {
-      login(username);
-      navigate("/");
-    }
-  };
-
-  return (
-    <div className="container mt-5 text-center">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin} className="mx-auto" style={{ maxWidth: "400px" }}>
-        <input
-          type="text"
-          placeholder="Enter a username"
-          className="form-control mb-3"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <button className="btn btn-danger w-100">Login</button>
-      </form>
-    </div>
-  );
-};
 
 // ====== MOVIE PAGE ======
 const MovieCard = () => {
@@ -64,17 +16,9 @@ const MovieCard = () => {
   const [loading, setLoading] = useState(false);
   const [genres, setGenres] = useState({});
   const fallbackImage = "https://via.placeholder.com/500x750?text=No+Image";
-  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const apiKey = "5a6c3a826b253bb9ac28a7823a40b89e";
-
-  useEffect(() => {
-    if (!user) navigate("/login");
-    fetchGenres();
-    fetchMovies();
-    // eslint-disable-next-line
-  }, [user]);
 
   const fetchGenres = async () => {
     try {
@@ -114,6 +58,12 @@ const MovieCard = () => {
 
   const getDownloadLink = (movie) =>
     `https://yts.mx/browse-movies/${movie.title.replace(/\s+/g, "-").toLowerCase()}`;
+  
+  useEffect(() => {
+  fetchGenres();   // load genres
+  fetchMovies();   // load default latest movies
+}, []);
+
 
   return (
     <div className="run text-white min-vh-100">
@@ -140,10 +90,7 @@ const MovieCard = () => {
             </ul>
             <br />
             
-            <div className="d-flex align-items-center gap-2">
-              <span className="text-white small">{user}</span>
-              <button onClick={logout} className="btn btn-outline-danger btn-sm">Logout</button>
-            </div>
+        
           </div>
         </div>
       </nav>
